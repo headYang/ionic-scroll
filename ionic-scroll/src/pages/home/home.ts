@@ -15,18 +15,18 @@ export class HomePage {
     this.loadUsers();
   }
   loadUsers(infiniteScroll?) {
-    this.http.get('https://randomuser.me/api/?results=200')
-      .subscribe(res => {
-        this.users = res['results'];
-      });
-    // this.http.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
+    // this.http.get('https://randomuser.me/api/?results=200')
     //   .subscribe(res => {
-    //     console.log(res);
-    //     this.users = this.users.concat(res['results']); 
-    //   })
-    // if(infiniteScroll) {
-    //   infiniteScroll.complete();
-    // }
+    //     this.users = res['results'];
+    //   });
+    this.http.get(`https://randomuser.me/api/?results=20&page=${this.page}`)
+      .subscribe(res => {
+        console.log(res);
+        this.users = this.users.concat(res['results']); 
+      })
+    if(infiniteScroll) {
+      infiniteScroll.complete();
+    }
   }
   loadMore(infiniteScroll) {
     this.page++;

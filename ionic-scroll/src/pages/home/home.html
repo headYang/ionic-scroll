@@ -6,8 +6,10 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <!-- <ion-list [virtualScroll] = "users" [approxItemHeight] = "'88px'">  -->
   <ion-card *ngFor = "let user of users">
+  <!-- <ion-card *virtualItem = "let user"></ion-card> -->
     <ion-item>
       <ion-avatar item-start>
         <img [src]="user.picture.medium" alt="">
@@ -18,6 +20,7 @@
       {{ user.email }}
     </ion-card-content>
   </ion-card>
+  <!-- </ion-list> -->
 
   <ion-infinite-scroll (ionInfinite)="loadMore($event)" loadingSpinner = "bubbles">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
